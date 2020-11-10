@@ -8,4 +8,4 @@ navbar:
       href: 1-Description.html
     - text: "A propos"
       href: about.html
-output_dir: "_site"
+output_dir: "docs"
