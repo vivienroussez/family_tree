@@ -1,0 +1,8 @@
+---
+title: "A propos des auteurs"
+---
+
+Les auteurs et contributeurs sont les membres de la famille. Tous les contenus ont également été fournis par la communauté familiale !
+
+
+La réalisation technique a été entièrement assurée grâce au logiciel open-source R par le chief data scientist de la famille :D

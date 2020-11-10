@@ -1,0 +1,11 @@
+name: "arbre-digit-R"
+navbar:
+  title: "Arbre généalogique digital"
+  left:
+    - text: "Présentation du site"
+      href: index.html
+    - text: "Présentation de la famille"
+      href: 1-Description.html
+    - text: "A propos"
+      href: about.html
+output_dir: "_site"

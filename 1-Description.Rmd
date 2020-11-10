@@ -1,0 +1,37 @@
+---
+title: "Description de la famille"
+---
+
+```{r,include=FALSE}
+knitr::opts_chunk$set(message = F,warning = F,error = F)
+source("src/12-data_prep.R")
+```
+
+# Description générale de la famille
+
+Actuellement, ```r nrow(generations)``` personnes figurent dans le fichier. Certains le sont à titre "principal" (c'est à dire qu'il y a une ligne dédiée  dans le fichier), d'autres à titre secondaire (en tant que parent ou conjoint). Ce statut est naturellement facilement modifiable en ajoutant une ligne dédiée pour une personne.
+
+On y trouve ```r dplyr::n_distinct(generations$generation)``` générations s'étalant depuis ```r year(min(arbre$date_de_naissance))``` (pour les personnes renseignées à "titre principal") jusqu'à nos jours.
+
+
+# Arbre généalogique complet
+
+```{r}
+nodes <- mutate(generations,id=row_number()) %>% 
+  rename(label=nom,level=generation)
+elist <- data.frame(from=match(graph_gen$from,generations$nom),
+                    to=match(graph_gen$to,generations$nom))
+visNetwork(nodes,
+           elist,main = "Arbre généalogique") %>% 
+  visEdges(arrows = "none") %>% 
+  visHierarchicalLayout()
+```
+
+# Répartition géographique
+
+```{r}
+leaflet() %>% 
+  addAwesomeMarkers(data=arbre,lng = ~long,lat = ~lat,popup = ~nom_complet) %>% 
+  addTiles()
+```
+
