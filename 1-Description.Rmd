@@ -3,7 +3,7 @@ title: "Description de la famille"
 ---
 
 ```{r,include=FALSE}
-knitr::opts_chunk$set(message = F,warning = F,error = F)
+knitr::opts_chunk$set(message = F,warning = F,error = F,echo = F)
 source("src/12-data_prep.R")
 ```
 

@@ -4,6 +4,8 @@ title: "Il était une fois une famille de ch'Nord"
 
 # Présentation
 
+![](img/visio_mars2020.jpg)
+
 Né pendant le premier confinement dû à l'épidémie de Covid19 en mars 2020, ce projet avait vocation à :
 
 - Digitaliser la mémoire des anciens
