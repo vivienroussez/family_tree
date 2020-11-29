@@ -2,8 +2,6 @@
 title: "A propos des auteurs"
 ---
 
-![](img/visio_mars2020.jpg)
-
 Né pendant le premier confinement dû à l'épidémie de Covid19 en mars 2020, ce projet avait vocation à :
 
 - Digitaliser la mémoire des anciens
@@ -11,6 +9,8 @@ Né pendant le premier confinement dû à l'épidémie de Covid19 en mars 2020, 
 - S'occuper en famille pendant le confinement ;)
 
 Partant des famille Roussez et Bruneel, qui vivra où le projet s'arrêtera !
+
+![](img/visio_mars2020.jpg)
 
 # Mise en oeuvre 
 
