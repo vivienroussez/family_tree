@@ -2,25 +2,27 @@
 title: "Il était une fois une famille de ch'Nord"
 ---
 
-# Présentation
+# Vue générale
 
-![](img/visio_mars2020.jpg)
+Voici l'arbre généalogique de la famille (vue non hiérarchique) avec les personnes qui ont été renseignées à ce jour. Les liens en trait plein matérialisent les mariages, les liens en pointillés les relations de filiation.
+Une couleur correspond à une famille, une forme à un genre. Les rectangle longs correspondent aux membres de la famille qui y figurent en tant que parents ou époux(se) mais n'ont pas d'entrée individualle dans le fichier source $\rightarrow$ à vous de jouer ! 
 
-Né pendant le premier confinement dû à l'épidémie de Covid19 en mars 2020, ce projet avait vocation à :
 
-- Digitaliser la mémoire des anciens
-- Centraliser l'accès aux photos, souvenirs... Pour que toute la famille puisse y accéder
-- S'occuper en famille pendant le confinement ;)
+```{r,include=FALSE}
+knitr::opts_chunk$set(message = F,warning = F,error = F,echo = F)
+source("src/12-data_prep.R")
+```
 
-Partant des famille Roussez et Bruneel, qui vivra où le projet s'arrêtera !
-
-# Mise en oeuvre 
-
-Tout part d'un tableur en ligne accessible par tous les membres de la famille et présenté comme suit :
-
-![](img/Illustr_genealogie.png)
-
-Le but du jeu étant que tou(te)s collaborent et remplissement pour la partie de la la/le concerne. Dans le même dossier en ligne que ce classeur se trouvent également des fichiers documents et image qui permettent de stocker des informations moins structurées et plus qualitatives (photos, textes) sur tous les membres de la famille poru établir les portraits qui figurent dans ce site.
+```{r,fig.height=10,fig.width=10}
+layout <- layout_with_fr(family_graph)
+plot(family_graph, 
+     vertex.frame.color = "gray", 
+     vertex.label.color = "black", 
+     vertex.label.cex = 0.8,
+     edge.arrow.size = 0.1,
+     vertex.shape = V(family_graph)$shape,
+     vertex.size=5)
+```
 
 
 

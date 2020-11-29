@@ -2,7 +2,20 @@
 title: "A propos des auteurs"
 ---
 
-Les auteurs et contributeurs sont les membres de la famille. Tous les contenus ont également été fournis par la communauté familiale !
+![](img/visio_mars2020.jpg)
 
+Né pendant le premier confinement dû à l'épidémie de Covid19 en mars 2020, ce projet avait vocation à :
 
-La réalisation technique a été entièrement assurée grâce au logiciel open-source R par le chief data scientist de la famille :D
+- Digitaliser la mémoire des anciens
+- Centraliser l'accès aux photos, souvenirs... Pour que toute la famille puisse y accéder
+- S'occuper en famille pendant le confinement ;)
+
+Partant des famille Roussez et Bruneel, qui vivra où le projet s'arrêtera !
+
+# Mise en oeuvre 
+
+Tout part d'un tableur en ligne accessible par tous les membres de la famille et présenté comme suit :
+
+![](img/Illustr_genealogie.png)
+
+Le but du jeu étant que tou(te)s collaborent et remplissement pour la partie de la la/le concerne. Dans le même dossier en ligne que ce classeur se trouvent également des fichiers documents et image qui permettent de stocker des informations moins structurées et plus qualitatives (photos, textes) sur tous les membres de la famille poru établir les portraits qui figurent dans ce site.

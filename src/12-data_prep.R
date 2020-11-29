@@ -1,5 +1,18 @@
 source("src/11-Import.R")
 
+### Toutes les edges dans la même table
+liens <- bind_rows(filiations_df,mariages_df) %>% 
+  select(from,to,annee_naissance,type) %>% 
+  mutate(across(c(from,to),
+                function(xx) coalesce(xx,"Inconnu"))) %>% 
+  filter(from!="Inconnu" & to!="Inconnu") %>% 
+  mutate(lty=ifelse(type=="filiation","dashed","solid"))
+
+# Tous les individus
+tout_le_monde <- c(liens$from,liens$to) %>% 
+  unique() %>% 
+  setdiff("Inconnu")
+
 gen_ref <- filter(arbre,generation_reference==1) # Génération de référence (la mienne)
 
 ### Calculer la distance de chaque individu par rapport à la génération de référence
@@ -32,7 +45,24 @@ lieux <- paste(str_sub(arbre$lieu_de_vie_principal,1,2),
 geo <- tidygeocoder::geo_osm(lieux)
 arbre <- bind_cols(arbre,geo) %>% 
   mutate(arbre,nom_complet=paste(nom,prenom))
-  
 
+
+
+# Construction de la table des individus
+individus <- select(arbre,nom=nom_complet,genre,annee_naissance,famille=nom) %>% 
+  right_join(generations,by="nom") %>%  
+  mutate(nom2 = unlist(purrr::map(str_split(nom," |-"),1)),
+         famille=as.factor(ifelse(is.na(famille),nom2,famille)),
+         shape=ifelse(genre=="M","square","circle"),
+         shape = ifelse(is.na(shape),"crectangle",shape)) %>% 
+  select(-nom2)
+
+# couleurs
+pal <- n_distinct(individus$famille) %>% 
+  rainbow()
+individus$color <- pal[individus$famille]
+
+# Construction du graphe d'ensemble
+family_graph <- graph_from_data_frame(liens,directed = T,vertices = individus)
 
 

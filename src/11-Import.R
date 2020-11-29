@@ -19,7 +19,7 @@ arbre <- ungroup(arbre) %>%
 # Filiations
 filiations_df <- select(arbre,child,pere,mere,annee_naissance) %>% 
   pivot_longer(-c(child,annee_naissance),values_to = "parent",names_to = "type") %>% 
-  rename(to=parent,from=child) %>% 
+  rename(from=parent,to=child) %>% 
   mutate(type="filiation")
 graph_filiations <- select(filiations_df,from,to) %>% 
   na.omit() %>% 
@@ -51,16 +51,7 @@ parents_df <- parents_df[which(lapply(parents_df,length)>1)] %>%
   distinct()
 
 
-### Construction du graphe d'ensemble
-graph_gen <- bind_rows(filiations_df,mariages_df) %>% 
-  select(from,to,annee_naissance,type) %>% 
-  mutate(across(c(from,to),
-                function(xx) coalesce(xx,"Inconnu")))
 
-family_graph <- graph_from_data_frame(graph_gen,directed = F) %>% 
-  simplify(remove.multiple = T)
 # plot(family_graph,edge.arrow.size=.2)
 
-tout_le_monde <- V(family_graph) %>% 
-  names() %>% 
-  setdiff("Inconnu")
+
